@@ -1,0 +1,7 @@
+{
+	"extends": "xo/esnext",
+	"env": {
+		"es6": true,
+		"node": true
+	}
+}
