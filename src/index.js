@@ -4,6 +4,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const seeder = require('mongoose-seeder');
 
 // Mongodb connection
 mongoose.connect('mongodb://localhost:27017/course-api');
@@ -15,6 +16,17 @@ const app = express();
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
 	console.log('Connection to database successful');
+	if (process.env.seed) {
+		console.log('Dropping database & adding seed data');
+		seeder.seed(require('./data/data.json'))
+			.then(() => {
+				console.log('Successfully seeded database');
+			})
+			.catch(error => {
+				console.error('Error seeded database');
+				console.error(error);
+			});
+	}
 });
 
 // Set our port
