@@ -2,9 +2,20 @@
 
 // Load modules
 const express = require('express');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 
+// Mongodb connection
+mongoose.connect('mongodb://localhost:27017/course-api');
+const db = mongoose.connnection;
+
 const app = express();
+
+// Mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+	console.log('Connection to database successful');
+});
 
 // Set our port
 app.set('port', process.env.PORT || 5000);
