@@ -9,7 +9,7 @@ const seeder = require('mongoose-seeder');
 
 // Mongodb connection
 mongoose.connect('mongodb://localhost:27017/course-api');
-const db = mongoose.connnection;
+const db = mongoose.connection;
 
 const app = express();
 
