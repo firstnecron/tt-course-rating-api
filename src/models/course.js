@@ -45,3 +45,5 @@ const CourseSchema = new mongoose.Schema({
 	}],
 	reviews: [mongoose.Schema.Types.ObjectId]
 });
+
+module.exports = mongoose.model('Course', CourseSchema);
