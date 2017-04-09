@@ -1,6 +1,7 @@
 'use strict';
 
 // Load modules
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -34,6 +35,10 @@ app.set('port', process.env.PORT || 5000);
 
 // Morgan gives us http request logging
 app.use(morgan('dev'));
+
+// Parse Incomming requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Setup our static route to serve files from the "public" folder
 app.use('/', express.static('public'));
