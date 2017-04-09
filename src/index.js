@@ -43,6 +43,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Setup our static route to serve files from the "public" folder
 app.use('/', express.static('public'));
 
+// Setup api routes
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
 // Catch 404 and forward to global error handler
 app.use((req, res, next) => {
 	const err = new Error('File Not Found');
