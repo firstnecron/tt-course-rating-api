@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const CourseSchema = new mongoose.Schema({
 	user: {
@@ -31,5 +32,7 @@ const CourseSchema = new mongoose.Schema({
 		ref: 'Review'
 	}]
 });
+
+CourseSchema.plugin(deepPopulate);
 
 module.exports = mongoose.model('Course', CourseSchema);
