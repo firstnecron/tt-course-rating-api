@@ -11,7 +11,7 @@ router.get('/', middleware.authenticate, (req, res) => {
 
 router.post('/', (req, res, next) => {
 	if (req.body.fullName &&
-	req.body.email &&
+	req.body.emailAddress &&
 	req.body.password &&
 	req.body.confirmPassword) {
 		if (req.body.password !== req.body.confirmPassword) {
@@ -22,7 +22,7 @@ router.post('/', (req, res, next) => {
 
 		const userData = {
 			fullName: req.body.fullName,
-			email: req.body.email,
+			emailAddress: req.body.emailAddress,
 			password: req.body.password
 		};
 
