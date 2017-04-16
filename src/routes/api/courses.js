@@ -24,7 +24,8 @@ router.post('/', middleware.authenticate, (req, res, next) => {
 			return next(error);
 		}
 
-		return res.location('/');
+		res.location('/');
+		return res.end();
 	});
 });
 

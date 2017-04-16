@@ -31,7 +31,8 @@ router.post('/', (req, res, next) => {
 				return next(error);
 			}
 
-			return res.location('/');
+			res.location('/');
+			return res.end();
 		});
 	} else {
 		const error = new Error('All fields required');
